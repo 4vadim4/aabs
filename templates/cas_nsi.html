@@ -1,0 +1,92 @@
+{% extends 'welcome.html' %}
+
+
+
+
+
+{% block cas_nsi %}
+
+<p>Централизованная автоматизированная система "Нормативно-справочная информация ***" (ЦАС НСИ) предназначена для введения
+справочников, содержащих нормативно-справочную информацию, и последующей вырузки нормативно-справочной информации потребителям.</p>
+
+    <p>ЦАС НСИ оснащена веб-интерфейсом. Для работы в ЦАС НСИ используется Интернет-браузер (Microsoft Internet Explorer).
+Для работы в ЦАС НСИ доступны формы ввода и обработки данных:<br>
+- форма справочника;<br>
+- форма редактирования записи справочника;<br>
+- форма загрузки файлов.<br>
+Пользователь ЦАС НСИ имеет определенные администратором системы права доступа к тем или иным данным и функциям системы.</p>
+
+
+
+
+<br><br>
+<hr>
+<div id="load">
+
+
+
+
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+            <li><a href="{{ document.file.url }}">{{ document.file.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+
+        <form action="{% url 'cas_nsi_load' %}" enctype="multipart/form-data" method="post" >
+            {% csrf_token %}
+            <p>{{ form2.non_field_errors }}</p>
+            <p>{{ form2.file.label_tag }} {{ form2.file.help_text }}</p>
+            <p>
+                {{ form2.file.errors }}
+                {{ form2.file }}
+            </p>
+            <p><input type="submit" value="Загрузить" /></p>
+        </form>
+
+
+
+
+
+
+
+</div>
+
+{% if username %}
+    <div class="large-offset-3">
+    <br><br>
+    <table border="1">
+        <tr>
+            <td><b>Стенд</b></td>
+            <td><b>Информационный ресурс</b></td>
+            <td><b>Имя машины</b></td>
+            <td><b>КЭ</b></td>
+            <td><b>IP адрес</b></td>
+            <td><b>URL адрес</b></td>
+            <td><b>Логин</b></td>
+            <td><b>Пароль</b></td>
+        </tr>
+        {% for value in all_odjects %}
+        <tr><td>{{ value.casbook_stand }}</td><td>{{ value.casbook_resource }}</td><td>{{ value.casbook_name }}</td><td>{{ value.casbook_ke }}</td>
+            <td>{{ value.casbook_ip }}</td><td>{{ value.casbook_url }}</td><td>{{ value.casbook_login }}</td><td>{{ value.casbook_passwd }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <form action="{% url 'cas_nsi' %}" method="post">
+        {% csrf_token %}
+        {{ form1 }}
+
+        <br>
+        <input type="submit" class="button-bar" value="Добавить">
+    </form>
+    </div>
+
+
+{% endif %}
+
+{% endblock %}

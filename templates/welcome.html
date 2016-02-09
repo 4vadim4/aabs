@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}">
+</head>
+<body>
+<div class="top-bar">
+    <section class="top-bar-section">
+        <ul class="right">
+            {% if username %}
+                <li><a href="{% url 'logout' %}">Выйти ({{ username }})</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Войти</a></li>
+            {% endif %}
+        </ul>
+    </section>
+</div>
+<p><h4><a href="{% url 'home' %}">Home</a></h4></p>
+<br><br>
+    <div id="topnav">
+      <a href="{% url 'irbis' %}">АС ИРБИС</a> &nbsp | &nbsp <a href="{% url 'cas_nsi' %}">АС ЦАС НСИ</a> &nbsp | &nbsp  <a href="{% url 'kc' %}">АС КЦ</a> &nbsp | &nbsp <a href="{% url 'vik' %}">АС ВИК</a>
+    </div>
+<br><br><br><br>
+
+
+{% block home %}{% endblock %}
+
+{% block irbis %}{% endblock %}
+
+{% block cas_nsi %}{% endblock %}
+
+{% block kc %}{% endblock %}
+
+{% block vik %}{% endblock %}
+
+{% block login %}{% endblock %}
+
+
+<br><br>
+
+
+<div id="footer">
+    </div>
+
+</body>
+</html>
+
+
+
+
+
