@@ -16,7 +16,14 @@ urlpatterns = patterns('',
     url(r'^kc/$', 'aabs.views.kc', name='kc'),
     url(r'^vik/$', 'aabs.views.vik', name='vik'),
     url(r'^login/$', 'aabs.views.login', name='login'),
+
     url(r'^logout/$', 'aabs.views.logout', name='logout'),
+    url(r'^openlogin/$', 'django.contrib.auth.views.login', name='openlogin'),
+#    url(r'^openlogin/$', 'aabs.views.openlogin', name='openlogin'),
+
+#    url(r'^auth/', include('django.contrib.auth.urls', namespace='auth')),
     url(r'^cas_nsi_load/$', 'aabs.views.cas_nsi_load', name='cas_nsi_load'),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

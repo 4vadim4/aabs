@@ -53,6 +53,16 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
+
 ROOT_URLCONF = 'aabs.urls'
 
 WSGI_APPLICATION = 'aabs.wsgi.application'
@@ -94,5 +104,6 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
 
 #MEDIA_URL = 'http://127.0.0.1:8000/media/'

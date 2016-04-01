@@ -1,4 +1,7 @@
 from django.db import models
+from aabs.settings import MEDIA_ROOT
+import os
+
 
 
 class CASBook(models.Model):
@@ -31,6 +34,9 @@ class LoadFileForm(models.Model):
 
 
     def __str__(self):
-        return self.file.name
+        full_path = os.path.join(MEDIA_ROOT, self.file.name)
+        filepathis = os.path.basename(full_path)
 
+        return filepathis
+#        return self.name()
 
