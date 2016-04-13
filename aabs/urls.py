@@ -15,14 +15,17 @@ urlpatterns = patterns('',
     url(r'^cas_nsi/$', 'aabs.views.cas_nsi', name='cas_nsi'),
     url(r'^kc/$', 'aabs.views.kc', name='kc'),
     url(r'^vik/$', 'aabs.views.vik', name='vik'),
-    url(r'^login/$', 'aabs.views.login', name='login'),
+#    url(r'^login/$', 'aabs.views.login', name='login'),
 
     url(r'^logout/$', 'aabs.views.logout', name='logout'),
+#    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^openlogin/$', 'django.contrib.auth.views.login', name='openlogin'),
-#    url(r'^openlogin/$', 'aabs.views.openlogin', name='openlogin'),
 
-#    url(r'^auth/', include('django.contrib.auth.urls', namespace='auth')),
     url(r'^cas_nsi_load/$', 'aabs.views.cas_nsi_load', name='cas_nsi_load'),
+#    url(r'^search/$', include('haystack.urls')),
+
+#    url(r'^search-form/$', 'aabs.views.search_form', name='search_form'),
+    url(r'^search/$', 'aabs.views.search', name='search'),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,23 @@
+{% extends 'welcome.html' %}
+
+{% block search %}
+
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+{% if search_search %}
+    <p>Найдено {{ search_search|length }} совпадения(-й){{ search_search|pluralize }}.</p>
+    <ul>
+        {% for find in search_search %}
+        <li>{{ find.casbook_stand }} - {{ find.casbook_resource }} - {{ find.casbook_name }}
+         - {{ find.casbook_ke }} - {{ find.casbook_ip }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Введенное значение не найдено. Повторите попытку.</p>
+{% endif %}
+<!--    <title>Search</title> -->
+
+{{ message }}
+{% endblock %}
+
+

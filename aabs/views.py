@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response, redirect
 from django.core.urlresolvers import reverse
@@ -9,13 +9,22 @@ from django.contrib import auth
 from .forms import AddCASBook, AddLoadFileForm
 from .models import CASBook, LoadFileForm
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import (REDIRECT_FIELD_NAME, login as auth_login,
+    logout as auth_logout, get_user_model, update_session_auth_hash)
+from django.shortcuts import resolve_url
+from django.utils.http import is_safe_url
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.response import TemplateResponse
+from django.utils.translation import ugettext as _
+from django.db.models import Q
+from django.contrib.flatpages.models import FlatPage
 
 
 
-
+'''
 def welcome(request):
     return render_to_response('welcome.html')
-
+'''
 
 def home(request):
     persons = ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
@@ -92,13 +101,13 @@ def vik(request):
 
 
 
-#HttpResponseRedirect(reverse('welcome'))
-
-
+'''
 def openlogin(request):
     return render_to_response('login.html')
 
 #@csrf_protect
+
+
 def login(request):
     args = {}
     args.update(csrf(request))
@@ -110,8 +119,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             return render_to_response(args, request_context)
-#            return redirect('home')
-#            return HttpResponseRedirect(request.META.HTTP_REFERER)
+
 
         else:
             args['login_error'] = "Пользователь не найден"
@@ -125,3 +133,68 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+    '''
+
+def logout(request, next_page=None,
+           template_name='logged_out.html',
+           redirect_field_name=REDIRECT_FIELD_NAME,
+           current_app=None, extra_context=None):
+    """
+    Logs out the user and displays 'You are logged out' message.
+    """
+    auth_logout(request)
+
+    if next_page is not None:
+        next_page = resolve_url(next_page)
+
+    if (redirect_field_name in request.POST or
+            redirect_field_name in request.GET):
+        next_page = request.POST.get(redirect_field_name,
+                                     request.GET.get(redirect_field_name))
+        # Security check -- don't allow redirection to a different host.
+        if not is_safe_url(url=next_page, host=request.get_host()):
+            next_page = request.path
+
+    if next_page:
+        # Redirect to this page until the session has been cleared.
+        return HttpResponseRedirect(next_page)
+
+    current_site = get_current_site(request)
+    context = {
+        'site': current_site,
+        'site_name': current_site.name,
+        'title': _('Logged out')
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return TemplateResponse(request, template_name, context,
+        current_app=current_app)
+
+
+'''
+def search_form(request):
+    return render_to_response('search.html')
+'''
+
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        search_search = CASBook.objects.filter(Q(casbook_stand__icontains=q) | Q(casbook_resource__icontains=q) |
+                                               Q(casbook_name__icontains=q) | Q(casbook_ke__icontains=q) |
+                                                Q(casbook_ip__icontains=q))
+        return render_to_response('search.html', {'search_search': search_search, 'query': q})
+    else:
+        message = 'You submitted an empty form.'
+    return render_to_response('search.html', {'message': message})
+
+'''
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        books = Book.objects.filter(title__icontains=q)
+        return render_to_response('search_results.html',
+            {'books': books, 'query': q})
+    else:
+        return HttpResponse('Please submit a search term.')
+        '''

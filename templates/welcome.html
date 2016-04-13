@@ -3,19 +3,20 @@
 <html>
 <head>
     <title>Main page</title>
-    <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/view.css" %}">
 </head>
 <body>
-<div class="top-bar">
-    <section class="top-bar-section">
-        <ul class="right">
+
+<div id="top-bar">
+    <div id="top-bar-section">
+        <!--<ul> class="right">-->
             {% if username %}
-                <li><a href="{% url 'logout' %}">Выйти ({{ username }})</a></li>
+                <p><a href="{% url 'logout' %}">Выйти ({{ username }})</a></p>
             {% else %}
-                <li><a href="{% url 'openlogin' %}?next={{request.path}}">Войти</a></li>
+                <p><a href="{% url 'openlogin' %}?next={{request.path}}">Войти</a></p>
             {% endif %}
-        </ul>
-    </section>
+       <!-- </ul>-->
+    </div>
 </div>
 <p><h4><a href="{% url 'home' %}">Home</a></h4></p>
 <br><br>
@@ -23,6 +24,15 @@
       <a href="{% url 'irbis' %}">АС ИРБИС</a> &nbsp | &nbsp <a href="{% url 'cas_nsi' %}">АС ЦАС НСИ</a> &nbsp | &nbsp  <a href="{% url 'kc' %}">АС КЦ</a> &nbsp | &nbsp <a href="{% url 'vik' %}">АС ВИК</a>
     </div>
 <br><br><br><br>
+
+<div id=search_top>
+<div id="search">
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+</div>
+</div>
 
 
 {% block home %}{% endblock %}
@@ -36,6 +46,10 @@
 {% block vik %}{% endblock %}
 
 {% block login %}{% endblock %}
+
+{% block logout %}{% endblock %}
+
+{% block search %}{% endblock %}
 
 
 <br><br>

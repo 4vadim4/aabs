@@ -29,8 +29,6 @@
 <div id="load">
 
 
-
-
     {% if documents %}
         <ul>
         {% for document in documents %}
@@ -53,43 +51,41 @@
             <p><input type="submit" value="Загрузить" /></p>
         </form>
 
-
-
-
-
-
-
 </div>
 
 {% if username %}
-    <div class="large-offset-3">
+
     <br><br>
-    <table border="1">
-        <tr>
-            <td><b>Стенд</b></td>
-            <td><b>Информационный ресурс</b></td>
-            <td><b>Имя машины</b></td>
-            <td><b>КЭ</b></td>
-            <td><b>IP адрес</b></td>
-            <td><b>URL адрес</b></td>
-            <td><b>Логин</b></td>
-            <td><b>Пароль</b></td>
-        </tr>
-        {% for value in all_odjects %}
-        <tr><td>{{ value.casbook_stand }}</td><td>{{ value.casbook_resource }}</td><td>{{ value.casbook_name }}</td><td>{{ value.casbook_ke }}</td>
-            <td>{{ value.casbook_ip }}</td><td>{{ value.casbook_url }}</td><td>{{ value.casbook_login }}</td><td>{{ value.casbook_passwd }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <table>
+            <tr>
+                <td><b>Стенд</b></td>
+                <td><b>Информационный ресурс</b></td>
+                <td><b>Имя машины</b></td>
+                <td><b>КЭ</b></td>
+                <td><b>IP адрес</b></td>
+                <td><b>URL адрес</b></td>
+                <td><b>Логин</b></td>
+                <td><b>Пароль</b></td>
+            </tr>
+            {% for value in all_odjects %}
+            <tr><td>{{ value.casbook_stand }}</td><td>{{ value.casbook_resource }}</td><td>{{ value.casbook_name }}</td><td>{{ value.casbook_ke }}</td>
+                <td>{{ value.casbook_ip }}</td><td>{{ value.casbook_url }}</td><td>{{ value.casbook_login }}</td><td>{{ value.casbook_passwd }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
     <br><br>
+
+<div id="form_cas">
+
     <form action="{% url 'cas_nsi' %}" method="post">
         {% csrf_token %}
-        {{ form1 }}
+        {{ form1.as_p }}
 
         <br>
         <input type="submit" class="button-bar" value="Добавить">
     </form>
-    </div>
+</div>
 
 
 {% endif %}
