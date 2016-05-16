@@ -30,6 +30,7 @@ from django.contrib.auth.models import User
 
 def home(request):
     persons = User.objects.all().order_by('last_name')
+    near = 'a+b'
     '''
         persons = ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
                 'Носулько Дмитрий Николаевич', 'Румянцев Юрий Николаевич', 'Тарулин Виктор Леонидович',
