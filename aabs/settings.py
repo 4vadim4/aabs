@@ -89,7 +89,7 @@ LOGIN_REDIRECT_URL = "/"
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = None
 
 USE_I18N = True
 
@@ -113,3 +113,5 @@ MEDIA_URL = '/media/'
 
 
 #MEDIA_URL = 'http://127.0.0.1:8000/media/'
+
+

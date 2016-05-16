@@ -1,6 +1,12 @@
 from django.db import models
 from aabs.settings import MEDIA_ROOT
+from django.contrib.auth.models import User
 import os
+ #   import pdb; pdb.set_trace()
+from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.signals import user_logged_out
+import logging
+
 
 
 
@@ -40,3 +46,35 @@ class LoadFileForm(models.Model):
         return filepathis
 #        return self.name()
 
+
+
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    last_last_name = models.CharField(max_length=15, verbose_name='Отчество')
+#    avatar = models.ImageField(upload_to='images/users', verbose_name='Изображение')
+
+    def __unicode__(self):
+        return self.user
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
+
+
+
+
+def do_stuff_in(sender, user, request, **kwargs):
+    log_name = User.objects.get(username = user)
+    logging.basicConfig(format = '%(levelname)-8s [%(asctime)s] %(message)s', level = logging.INFO, filename = 'logger1.log')
+    logging.info('authorization by %s %s %s' %(log_name.last_name, log_name.first_name, log_name.userprofile.last_last_name))
+
+
+def do_stuff_out(sender, user, request, **kwargs):
+    log_name = User.objects.get(username = user)
+    logging.basicConfig(format = '%(levelname)-8s [%(asctime)s] %(message)s', level = logging.INFO, filename = 'logger1.log')
+    logging.info('logout by %s %s %s' %(log_name.last_name, log_name.first_name, log_name.userprofile.last_last_name))
+
+user_logged_in.connect(do_stuff_in)
+user_logged_out.connect(do_stuff_out)

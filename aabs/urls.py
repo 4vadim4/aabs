@@ -26,6 +26,8 @@ urlpatterns = patterns('',
 
 #    url(r'^search-form/$', 'aabs.views.search_form', name='search_form'),
     url(r'^search/$', 'aabs.views.search', name='search'),
+    url(r'^select_action/$', 'aabs.views.select_action', name='select_action'),
+
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

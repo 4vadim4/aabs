@@ -16,8 +16,7 @@
 
 
     {% for person in persons %}
-        <p>{{ person }}</p>
+        <p>{{ person.last_name }}&nbsp;{{ person.first_name }}&nbsp;{{ person.userprofile.last_last_name }}</p>
     {% endfor %}
-
 
 {% endblock %}

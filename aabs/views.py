@@ -17,19 +17,25 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
 from django.db.models import Q
-from django.contrib.flatpages.models import FlatPage
+from .script import *
+from django.contrib.auth.models import User
 
 
 
-'''
-def welcome(request):
-    return render_to_response('welcome.html')
-'''
+
+
+
+
+
 
 def home(request):
-    persons = ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
+    persons = User.objects.all().order_by('last_name')
+    '''
+        persons = ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
                 'Носулько Дмитрий Николаевич', 'Румянцев Юрий Николаевич', 'Тарулин Виктор Леонидович',
                 'Черкасов Юрий Андреевич')
+    '''
+    log_func(request)
 
     return render_to_response('home.html', {'persons': persons})
 
@@ -38,6 +44,7 @@ def irbis(request):
 
 
 def cas_nsi(request):
+    log_func(request)
     if request.method == 'POST':
         form1 = AddCASBook(request.POST)
         if form1.is_valid():
@@ -60,6 +67,7 @@ def cas_nsi(request):
     args['form2'] = AddLoadFileForm()
     args['username'] = auth.get_user(request).username
     args['nowpath'] = request.path
+#    print(request)
     return render_to_response('cas_nsi.html', args, context_instance=RequestContext(request))
 
 
@@ -76,8 +84,6 @@ def cas_nsi_load(request):
     else:
         form2 = AddLoadFileForm()
 
-#    documents = LoadFileForm.objects.all()
-#    return render_to_response('cas_nsi.html', {'documents': documents, 'form': form}, context_instance=RequestContext(request))
     args = {}
     args.update(csrf(request))
     args['all_odjects'] = CASBook.objects.all()
@@ -85,9 +91,23 @@ def cas_nsi_load(request):
     args['form1'] = AddCASBook()
     args['form2'] = AddLoadFileForm()
     args['username'] = auth.get_user(request).username
+
     return render_to_response('cas_nsi.html', args, context_instance=RequestContext(request))
 
 
+def select_action(request):
+        cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
+        print(cas_object.casbook_ip)
+        return render_to_response('cas_nsi.html', {'cas_object': cas_object}, context_instance=RequestContext(request))
+'''    if 'edit' in request.POST:
+#        print(request)
+
+        cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
+        return render_to_response('cas_nsi.html', {'cas_object': cas_object}, context_instance=RequestContext(request))
+
+    elif 'delete' in request.POST:
+        pass
+    return render_to_response('cas_nsi.html', context_instance=RequestContext(request)) '''
 
 
 
@@ -172,12 +192,9 @@ def logout(request, next_page=None,
         current_app=current_app)
 
 
-'''
-def search_form(request):
-    return render_to_response('search.html')
-'''
 
 def search(request):
+    log_func(request)
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         search_search = CASBook.objects.filter(Q(casbook_stand__icontains=q) | Q(casbook_resource__icontains=q) |
@@ -188,13 +205,5 @@ def search(request):
         message = 'You submitted an empty form.'
     return render_to_response('search.html', {'message': message})
 
-'''
-def search(request):
-    if 'q' in request.GET and request.GET['q']:
-        q = request.GET['q']
-        books = Book.objects.filter(title__icontains=q)
-        return render_to_response('search_results.html',
-            {'books': books, 'query': q})
-    else:
-        return HttpResponse('Please submit a search term.')
-        '''
+
+
