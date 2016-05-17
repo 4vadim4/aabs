@@ -30,7 +30,6 @@ from django.contrib.auth.models import User
 
 def home(request):
     persons = User.objects.all().order_by('last_name')
-    near = 'a+b'
     '''
         persons = ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
                 'Носулько Дмитрий Николаевич', 'Румянцев Юрий Николаевич', 'Тарулин Виктор Леонидович',
@@ -97,9 +96,14 @@ def cas_nsi_load(request):
 
 
 def select_action(request):
-        cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
-        print(cas_object.casbook_ip)
-        return render_to_response('cas_nsi.html', {'cas_object': cas_object}, context_instance=RequestContext(request))
+    if request.POST:
+        if 'delete' in request.POST:
+            cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
+            cas_object.delete()
+        elif 'edit' in request.POST:
+            pass
+
+    return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
 '''    if 'edit' in request.POST:
 #        print(request)
 
@@ -107,6 +111,7 @@ def select_action(request):
         return render_to_response('cas_nsi.html', {'cas_object': cas_object}, context_instance=RequestContext(request))
 
     elif 'delete' in request.POST:
+        print(cas_object.casbook_ip)
         pass
     return render_to_response('cas_nsi.html', context_instance=RequestContext(request)) '''
 
