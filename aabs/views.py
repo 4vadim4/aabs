@@ -100,20 +100,40 @@ def select_action(request):
         if 'delete' in request.POST:
             cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
             cas_object.delete()
+            return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
         elif 'edit' in request.POST:
-            pass
+            cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
+            data = {'casbook_stand': cas_object.casbook_stand, 'casbook_resource': cas_object.casbook_resource,
+                    'casbook_name': cas_object.casbook_name, 'casbook_ke': cas_object.casbook_ke,
+                    'casbook_ip': cas_object.casbook_ip, 'casbook_url': cas_object.casbook_url,
+                    'casbook_login': cas_object.casbook_login, 'casbook_passwd': cas_object.casbook_passwd
+                    }
+            cas_object_id = cas_object.id
+            form_edit = AddCASBook(data)
+            return render_to_response('cas_nsi_edit.html', {'form_edit': form_edit, 'cas_object_id': cas_object_id}, context_instance=RequestContext(request))
 
+
+
+def edit_form(request, cas_object_id):
+    print(cas_object_id)
+#    cas_object_edit = .objects.filter(id=323424).update(name='vadim')
+    my_record = CASBook.objects.get(id=cas_object_id)
+#    form_3 = AddCASBook(instance=my_record)
+
+    #And then, when the user sends back data by POST:
+
+    form_3 = AddCASBook(request.POST, instance=my_record)
+    if form_3.is_valid():
+        form_3.save()
     return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
-'''    if 'edit' in request.POST:
-#        print(request)
+'''    pass
+#    instance = get_object_or_404(MyModel, id=id)
+#    form = MyForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return redirect('next_view')
+    return direct_to_template(request, 'my_template.html', {'form': form}'''
 
-        cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
-        return render_to_response('cas_nsi.html', {'cas_object': cas_object}, context_instance=RequestContext(request))
-
-    elif 'delete' in request.POST:
-        print(cas_object.casbook_ip)
-        pass
-    return render_to_response('cas_nsi.html', context_instance=RequestContext(request)) '''
 
 
 
