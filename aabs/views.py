@@ -126,13 +126,7 @@ def edit_form(request, cas_object_id):
     if form_3.is_valid():
         form_3.save()
     return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
-'''    pass
-#    instance = get_object_or_404(MyModel, id=id)
-#    form = MyForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
-        return redirect('next_view')
-    return direct_to_template(request, 'my_template.html', {'form': form}'''
+
 
 
 

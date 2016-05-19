@@ -22,11 +22,10 @@ urlpatterns = patterns('',
     url(r'^openlogin/$', 'django.contrib.auth.views.login', name='openlogin'),
 
     url(r'^cas_nsi_load/$', 'aabs.views.cas_nsi_load', name='cas_nsi_load'),
-#    url(r'^search/$', include('haystack.urls')),
 
-#    url(r'^search-form/$', 'aabs.views.search_form', name='search_form'),
     url(r'^search/$', 'aabs.views.search', name='search'),
     url(r'^select_action/$', 'aabs.views.select_action', name='select_action'),
+    url(r'^edit_form/(?P<cas_object_id>\w+)/$', 'aabs.views.edit_form', name='edit_form'),
 
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
