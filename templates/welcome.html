@@ -10,7 +10,7 @@
 <div id="top-bar">
     <div id="top-bar-section">
         <!--<ul> class="right">-->
-            {% if username %}
+            {% if user.is_authenticated %}
                 <p><a href="{% url 'logout' %}">Выйти ({{ username }})</a></p>
             {% else %}
                 <p><a href="{% url 'openlogin' %}?next={{request.path}}">Войти</a></p>

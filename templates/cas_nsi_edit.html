@@ -6,6 +6,8 @@
 
 {% block cas_nsi_edit %}
 
+{% if user.is_authenticated %}
+
 <div id="form_cas">
     <form action="{% url 'edit_form' cas_object_id %}" method="post">
         {% csrf_token %}
@@ -15,6 +17,8 @@
         <input type="submit" class="button-bar" value="Изменить">
     </form>
 </div>
+
+ {% endif %}
 
 
 

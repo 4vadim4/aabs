@@ -37,12 +37,12 @@ a:hover {
     text-decoration: none;
    }
 
-table {
+#cas_table {
     width: 300px;
     margin: auto;
 }
 
-  table td {
+#cas_table td {
     border: 1px solid #008cba;
     text-align: center;
     padding: 7px;
@@ -150,6 +150,14 @@ display:block;
     margin: auto;
     text-align: right;
 
+
 }
 
+#form_cas_edit{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+
+}
 

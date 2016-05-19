@@ -53,10 +53,10 @@
 
 </div>
 
-{% if username %}
+{% if user.is_authenticated %}
 
     <br><br>
-        <table>
+        <table id="cas_table">
             <tr>
                 <td><b>Стенд</b></td>
                 <td><b>Информационный ресурс</b></td>
@@ -75,55 +75,49 @@
         </table>
 
     <br><br>
-{{ cas_object.casbook_url }}
+
+
+
 <div id="form_cas">
-    {% if request.METHOD == 'GET' %}
 
 
-    <h1>П Р И В Е Т !</h1>
+                <form action="{% url 'cas_nsi' %}" method="post">
+                    {% csrf_token %}
+                    {{ form1.as_p }}
 
-{{ cas_object }}
+                    <br>
+                    <input type="submit" class="button-bar" value="Добавить">
+                </form>
 
 
-    {% else %}
+            </div>
 
-    <form action="{% url 'cas_nsi' %}" method="post">
-        {% csrf_token %}
-        {{ form1.as_p }}
 
-        <br>
-        <input type="submit" class="button-bar" value="Добавить">
+
+
+    <br><br>
+
+<div id="form_cas_edit">
+    <form action="{% url 'select_action' %}" method="post">{% csrf_token %}
+        <p>Ресурс:&nbsp;
+            <select name="select1">
+                <option selected="selected">Выберите КЭ</option>
+                    {% for value in all_odjects %}
+                        <option>{{ value.casbook_ke }}</option>
+                    {% endfor %}
+            </select>
+        </p>
+        <p>
+            <input type="submit" name="edit" value="Редактировать">
+            <input type="submit" name="delete" value="Удалить">
+        </p>
     </form>
-
-    {% endif %}
 </div>
 
 
-{% endif %}
 
-    <hr>
-
-    <form action="{% url 'select_action' %}" method="post">{% csrf_token %}
-<table>
-  <tr valign="top">
-      <td class="">Ресурс</td>
-
-  </tr>
-  <tr valign="top">
-      <td align="center">
-          <select name="select1">
-          <option selected="selected">Выберите КЭ</option>
-        {% for value in all_odjects %}
-        <option>{{ value.casbook_ke }}</option>
-        {% endfor %}
-          </select>
-      </td>
+    {% endif %}
 
 
-  </tr>
-</table>
-    <input type="submit" name="edit" value="Редактировать">
-    <input type="submit" name="delete" value="Удалить">
-    </form>
+ {% endblock %}
 
-{% endblock %}

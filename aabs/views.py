@@ -103,6 +103,7 @@ def select_action(request):
             return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
         elif 'edit' in request.POST:
             cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
+            username = auth.get_user(request).username
             data = {'casbook_stand': cas_object.casbook_stand, 'casbook_resource': cas_object.casbook_resource,
                     'casbook_name': cas_object.casbook_name, 'casbook_ke': cas_object.casbook_ke,
                     'casbook_ip': cas_object.casbook_ip, 'casbook_url': cas_object.casbook_url,
@@ -110,13 +111,12 @@ def select_action(request):
                     }
             cas_object_id = cas_object.id
             form_edit = AddCASBook(data)
-            return render_to_response('cas_nsi_edit.html', {'form_edit': form_edit, 'cas_object_id': cas_object_id}, context_instance=RequestContext(request))
+            return render_to_response('cas_nsi_edit.html', {'form_edit': form_edit, 'cas_object_id': cas_object_id,
+                                                            'username': username}, context_instance=RequestContext(request))
 
 
 
 def edit_form(request, cas_object_id):
-    print(cas_object_id)
-#    cas_object_edit = .objects.filter(id=323424).update(name='vadim')
     my_record = CASBook.objects.get(id=cas_object_id)
 #    form_3 = AddCASBook(instance=my_record)
 
@@ -125,7 +125,8 @@ def edit_form(request, cas_object_id):
     form_3 = AddCASBook(request.POST, instance=my_record)
     if form_3.is_valid():
         form_3.save()
-    return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
+#    return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
+    return redirect('/cas_nsi/')
 
 
 
