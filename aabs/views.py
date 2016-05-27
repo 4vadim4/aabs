@@ -22,22 +22,11 @@ from django.contrib.auth.models import User
 
 
 
-
-
-
-
-
-
 def home(request):
     persons = User.objects.all().order_by('last_name')
-    '''
-        ('Аксенов Денис Александрович', 'Аршаница Кирилл Александрович', 'Бородич Вадим Сергеевич',
-                'Носулько Дмитрий Николаевич', 'Румянцев Юрий Николаевич', 'Тарулин Виктор Леонидович',
-                'Черкасов Юрий Андреевич')
-    '''
     log_func(request)
-
     return render_to_response('home.html', {'persons': persons})
+
 
 def irbis(request):
     return render_to_response('irbis.html')
@@ -52,7 +41,7 @@ def cas_nsi(request):
                                           casbook_name = form1.cleaned_data['casbook_name'], casbook_ke = form1.cleaned_data['casbook_ke'],
                                           casbook_ip = form1.cleaned_data['casbook_ip'], casbook_url = form1.cleaned_data['casbook_url'],
                                           casbook_login = form1.cleaned_data['casbook_login'], casbook_passwd = form1.cleaned_data['casbook_passwd'])
-            book.save()
+#            book.save()
             return HttpResponseRedirect(reverse('cas_nsi'))
         else:
             form1 = AddCASBook()
@@ -67,7 +56,6 @@ def cas_nsi(request):
     args['form2'] = AddLoadFileForm()
     args['username'] = auth.get_user(request).username
     args['nowpath'] = request.path
-#    print(request)
     return render_to_response('cas_nsi.html', args, context_instance=RequestContext(request))
 
 
@@ -75,9 +63,7 @@ def cas_nsi_load(request):
     if request.method == 'POST':
         form2 = AddLoadFileForm(request.POST, request.FILES)
         if form2.is_valid():
- #           import pdb; pdb.set_trace()
             newdoc = LoadFileForm(file = request.FILES['file'])
-
             newdoc.save()
             return HttpResponseRedirect(reverse('cas_nsi_load'))
 
@@ -101,7 +87,7 @@ def select_action(request):
             cas_object = CASBook.objects.filter(casbook_ke=request.POST['select1'])
             cas_object.delete()
             return redirect('/cas_nsi/')
-#            return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
+
         elif 'edit' in request.POST:
             cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
             username = auth.get_user(request).username
@@ -119,17 +105,11 @@ def select_action(request):
 
 def edit_form(request, cas_object_id):
     my_record = CASBook.objects.get(id=cas_object_id)
-#    form_3 = AddCASBook(instance=my_record)
-
-    #And then, when the user sends back data by POST:
-
     form_3 = AddCASBook(request.POST, instance=my_record)
     if form_3.is_valid():
         form_3.save()
-#    return render_to_response('cas_nsi.html', context_instance=RequestContext(request))
+
     return redirect('/cas_nsi/')
-
-
 
 
 
@@ -142,48 +122,13 @@ def vik(request):
     return render_to_response('vik.html')
 
 
-
-'''
-def openlogin(request):
-    return render_to_response('login.html')
-
-#@csrf_protect
-
-
-def login(request):
-    args = {}
-    args.update(csrf(request))
-    request_context = RequestContext(request)
-    if request.POST:
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return render_to_response(args, request_context)
-
-
-        else:
-            args['login_error'] = "Пользователь не найден"
-            return render_to_response('login.html', args, request_context)
-
-    else:
-        return render_to_response('login.html', args, request_context)
-
-
-
-def logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect(reverse('home'))
-
-    '''
-
+#next function taken from the standard django package in /site-packages/django/contrib/auth/
 def logout(request, next_page=None,
            template_name='logged_out.html',
            redirect_field_name=REDIRECT_FIELD_NAME,
            current_app=None, extra_context=None):
     """
-    Logs out the user and displays 'You are logged out' message.
+        Logs out the user and displays 'You are logged out' message.
     """
     auth_logout(request)
 

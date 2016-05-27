@@ -2,7 +2,7 @@ from django.db import models
 from aabs.settings import MEDIA_ROOT
 from django.contrib.auth.models import User
 import os
- #   import pdb; pdb.set_trace()
+
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.signals import user_logged_out
 import logging
@@ -49,13 +49,12 @@ class LoadFileForm(models.Model):
 
 
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     last_last_name = models.CharField(max_length=15, verbose_name='Отчество')
 #    avatar = models.ImageField(upload_to='images/users', verbose_name='Изображение')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user
 
     class Meta:

@@ -18,22 +18,22 @@ body {
 }
 
 a {
-    color: #008cba; /* цвет ссылок */
-    text-decoration: none;  /* убрать подчеркивание ссылок */
+    color: #008cba; /* link's color */
+    text-decoration: none;  /* remove underline links */
    }
 
 a:visited {
-    color: #008cba; /* цвет посещенных ссылок */
+    color: #008cba; /* color already visited link  */
     text-decoration: none;
    }
 
 a:active {
-    color: #0058a0; /* цвет активных ссылок */
+    color: #0058a0; /* active link's color (active link becomes when you click on it.)*/
     text-decoration: none;
    }
 
 a:hover {
-    color: #0058a0; /* цвет ссылоки при наведении */
+    color: #0058a0; /* link's color hover (when mouse on it) */
     text-decoration: none;
    }
 
@@ -70,20 +70,20 @@ display:block;
   border:1px solid red;
 */
 #top-bar-section p {
-    float: right; /* выравнивания внутреннего дива */
+    float: right; /* aligning inside div */
     width: 25%;
-    margin-right: 20px;  /* отступ от правой границы */
-    text-align:right; /* выравнивания текста в диве */
+    margin-right: 20px;  /* indent from the right border */
+    text-align:right; /* text alignment in div */
     color: #333333;
 }
 
 #top-bar-section a {
-    color: white; /* цвет ссылок */
-    text-decoration: none;  /* убрать подчеркивание ссылок */
+    color: white; /* link's color */
+    text-decoration: none;  /* remove underline links */
 }
 
 #top-bar-section a:hover {
-    color: #006688; /* цвет ссылоки при наведении */
+    color: #006688; /* link's color hover (when mouse on it) */
     text-decoration: none;
    }
 
@@ -134,8 +134,8 @@ display:block;
 #footer {
     background: #333333;
 
-    color: white; /* Цвет текста */
-    width: 100%; /* Ширина слоя */
+    color: white; /* text color */
+    width: 100%; /* div's width */
     height: 50px;
    }
 

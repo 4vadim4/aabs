@@ -16,13 +16,10 @@ urlpatterns = patterns('',
     url(r'^kc/$', 'aabs.views.kc', name='kc'),
     url(r'^vik/$', 'aabs.views.vik', name='vik'),
 #    url(r'^login/$', 'aabs.views.login', name='login'),
-
     url(r'^logout/$', 'aabs.views.logout', name='logout'),
 #    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^openlogin/$', 'django.contrib.auth.views.login', name='openlogin'),
-
     url(r'^cas_nsi_load/$', 'aabs.views.cas_nsi_load', name='cas_nsi_load'),
-
     url(r'^search/$', 'aabs.views.search', name='search'),
     url(r'^select_action/$', 'aabs.views.select_action', name='select_action'),
     url(r'^edit_form/(?P<cas_object_id>\w+)/$', 'aabs.views.edit_form', name='edit_form'),
