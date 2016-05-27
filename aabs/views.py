@@ -84,9 +84,8 @@ def cas_nsi_load(request):
 def select_action(request):
     if request.POST:
         if 'delete' in request.POST:
-            cas_object = CASBook.objects.filter(casbook_ke=request.POST['select1'])
-            cas_object.delete()
-            return redirect('/cas_nsi/')
+            CASBook.objects.filter(casbook_ke=request.POST['select1']).delete()
+            return HttpResponseRedirect(reverse('cas_nsi'))
 
         elif 'edit' in request.POST:
             cas_object = CASBook.objects.get(casbook_ke=request.POST['select1'])
