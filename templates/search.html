@@ -1,11 +1,12 @@
 {% extends 'welcome.html' %}
+{% load i18n %}
 
 {% block search %}
 
-<p>You searched for: <strong>{{ query }}</strong></p>
+<p>{% blocktrans %}You searched for:{% endblocktrans %} <strong>{{ query }}</strong></p>
 
 {% if search_search %}
-    <p>Найдено {{ search_search|length }} совпадения(-й){{ search_search|pluralize }}.</p>
+    <p>{% blocktrans %}We found {{ search_search|length }} coincidence{{ search_search|pluralize }}.{% endblocktrans %}</p>
     <ul>
         {% for find in search_search %}
         <li>{{ find.casbook_stand }} - {{ find.casbook_resource }} - {{ find.casbook_name }}
@@ -13,7 +14,7 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>Введенное значение не найдено. Повторите попытку.</p>
+    <p>{% blocktrans %}The entered value is not found. Try again.{% endblocktrans %}</p>
 {% endif %}
 <!--    <title>Search</title> -->
 

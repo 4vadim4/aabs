@@ -1,12 +1,12 @@
 {% extends 'welcome.html' %}
-
+{% load i18n %}
 
 
 {% block logout %}
 
 
-<center><p>Вы разлогинились !</p>
-    <p>Спасибо, что были с нами. :)</p></center>
+<center><p>{% blocktrans %}You are logout !</p>
+    <p>Thank you for being with us. {% endblocktrans %} :)</p></center>
 
 
 {% endblock %}

@@ -22,6 +22,8 @@ SECRET_KEY = 'nxnq1rtb!nyc4-ktnb)o@vc099fo34p5en5tm)#1szyibo1%&u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 TEMPLATE_DEBUG = True
 
 TEMPLATE_DIRS = (
@@ -52,6 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 
@@ -87,7 +90,12 @@ LOGIN_REDIRECT_URL = "/"
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
+
+LANGUAGES = (
+    ('ru', 'Русский'),
+    ('en', 'English'),
+)
 
 TIME_ZONE = None
 
@@ -97,6 +105,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

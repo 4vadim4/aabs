@@ -1,27 +1,27 @@
 {% extends 'welcome.html' %}
-
+{% load i18n %}
 
 
 
 
 {% block cas_nsi %}
 
-<p>Централизованная автоматизированная система "Нормативно-справочная информация Сбербанка России" (ЦАС НСИ) предназначена для введения
-справочников, содержащих нормативно-справочную информацию, и последующей вырузки нормативно-справочной информации потребителям.</p>
+<p>{% blocktrans %}Centralized automated system "Standard-reference information Sberbank of Russia"  (CAS SRI) is designed for administration
+directories that contain reference data, and the subsequent unloading of reference information to consumers.</p>
 
-    <p>ЦАС НСИ оснащена веб-интерфейсом. Для работы в ЦАС НСИ используется Интернет-браузер (Microsoft Internet Explorer).
-Для работы в ЦАС НСИ доступны формы ввода и обработки данных:<br>
-- форма справочника;<br>
-- форма редактирования записи справочника;<br>
-- форма загрузки файлов.<br>
-Пользователь ЦАС НСИ имеет определенные администратором системы права доступа к тем или иным данным и функциям системы.</p>
+    <p>CAS SRI has a web interface. For work in the CAS SRI you mast use an Internet browser (Microsoft Internet Explorer).
+You can use next available forms data entry and processing for work in the CAS SRI system:<br>
+- form of reference book;<br>
+- form for editing phonebook entries;<br>
+- form for downloading files.<br>
+CAS SRI user has access to certain data and functions of the system defined by the system administrator.</p>
 
-    <p>В системе ЦАС НСИ автоматизированы следующие функции:<br>
-- просмотр данных;<br>
-- поиск данных;<br>
-- редактирование данных;<br>
-- выгрузка файлов;<br>
-- контроль целостности и семантики хранимых данных.</p>
+    <p>Following functions are automatized in CAS SRI system:<br>
+- data view;<br>
+- search Data;<br>
+- data editing;<br>
+- uploading files;<br>
+- control the integrity and semantics of the data stored.{% endblocktrans %}</p>
 
 
 <br><br>
@@ -58,14 +58,14 @@
     <br><br>
         <table id="cas_table">
             <tr>
-                <td><b>Стенд</b></td>
-                <td><b>Информационный ресурс</b></td>
-                <td><b>Имя машины</b></td>
-                <td><b>КЭ</b></td>
-                <td><b>IP адрес</b></td>
-                <td><b>URL адрес</b></td>
-                <td><b>Логин</b></td>
-                <td><b>Пароль</b></td>
+                <td><b>{% blocktrans %}Stand{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}Informative resource{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}Server name{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}Configuration item{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}IP adress{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}URL adress{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}Login{% endblocktrans %}</b></td>
+                <td><b>{% blocktrans %}Password{% endblocktrans %}</b></td>
             </tr>
             {% for value in all_odjects %}
             <tr><td>{{ value.casbook_stand }}</td><td>{{ value.casbook_resource }}</td><td>{{ value.casbook_name }}</td><td>{{ value.casbook_ke }}</td>
@@ -99,9 +99,9 @@
 
 <div id="form_cas_edit">
     <form action="{% url 'select_action' %}" method="post">{% csrf_token %}
-        <p>Ресурс:&nbsp;
+        <p>{% blocktrans %}Resource:{% endblocktrans %}&nbsp;
             <select name="select1">
-                <option selected="selected">Выберите КЭ</option>
+                <option selected="selected">{% blocktrans %}Choose configuration item{% endblocktrans %}</option>
                     {% for value in all_odjects %}
                         <option>{{ value.casbook_ke }}</option>
                     {% endfor %}

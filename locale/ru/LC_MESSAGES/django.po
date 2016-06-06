@@ -1,0 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-06 16:38+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: aabs/views.py:153
+msgid "Logged out"
+msgstr "Разлогиниться"
+
+#: templates/cas_nsi.html:9
+msgid ""
+"Centralized automated system \"Standard-reference information Sberbank of "
+"Russia\"  (CAS SRI) is designed for administration\n"
+"directories that contain reference data, and the subsequent unloading of "
+"reference information to consumers.</p>\n"
+"\n"
+"    <p>CAS SRI has a web interface. For work in the CAS SRI you mast use an "
+"Internet browser (Microsoft Internet Explorer).\n"
+"You can use next available forms data entry and processing for work in the "
+"CAS SRI system:<br>\n"
+"- form of reference book;<br>\n"
+"- form for editing phonebook entries;<br>\n"
+"- form for downloading files.<br>\n"
+"CAS SRI user has access to certain data and functions of the system defined "
+"by the system administrator.</p>\n"
+"\n"
+"    <p>Following functions are automatized in CAS SRI system:<br>\n"
+"- data view;<br>\n"
+"- search Data;<br>\n"
+"- data editing;<br>\n"
+"- uploading files;<br>\n"
+"- control the integrity and semantics of the data stored."
+msgstr ""
+"   <p>Централизованная автоматизированная система \"Нормативно-справочная "
+"информация СбербанкаРоссии\" (ЦАС НСИ) предназначена \n"
+"для введения справочников, содержащих нормативно-справочную информацию, и "
+"последующей вырузкинормативно-справочной информации потребителям.</p>\n"
+"   <p>ЦАС НСИ оснащена веб-интерфейсом. Для работы в ЦАС НСИ "
+"используетсяИнтернет-браузер (Microsoft Internet Explorer).\n"
+"Для работы в ЦАС НСИ доступны формы ввода и обработки данных:<br>\n"
+"- форма справочника;<br>\n"
+"- форма редактирования записи справочника;<br>\n"
+"- форма загрузки файлов.<br>\n"
+"Пользователь ЦАС НСИ имеет определенные администратором системы права "
+"доступа к тем или иным данным и функциям системы.</p>\n"
+"<p>В системе ЦАС НСИ автоматизированы следующие функции:<br>\n"
+"- просмотр данных;<br>\n"
+"- поиск данных;<br>\n"
+"- редактирование данных;<br>\n"
+"- выгрузка файлов;<br>\n"
+"- контроль целостности и семантики хранимых данных."
+
+#: templates/cas_nsi.html:61
+msgid "Stand"
+msgstr "Стенд"
+
+#: templates/cas_nsi.html:62
+msgid "Informative resource"
+msgstr "Информационный Ресурс"
+
+#: templates/cas_nsi.html:63
+msgid "Server name"
+msgstr "Имя сервера"
+
+#: templates/cas_nsi.html:64
+msgid "Configuration item"
+msgstr "Конфигурационный Элемент"
+
+#: templates/cas_nsi.html:65
+msgid "IP adress"
+msgstr "IP адрес"
+
+#: templates/cas_nsi.html:66
+msgid "URL adress"
+msgstr "URL адрес"
+
+#: templates/cas_nsi.html:67
+msgid "Login"
+msgstr "Логин"
+
+#: templates/cas_nsi.html:68
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/cas_nsi.html:102
+msgid "Resource:"
+msgstr "Ресурс"
+
+#: templates/cas_nsi.html:104
+msgid "Choose configuration item"
+msgstr "Выберите КЭ"
+
+#: templates/cas_nsi_edit.html:18
+msgid "Change"
+msgstr "Изменить"
+
+#: templates/home.html:10
+msgid ""
+"Department of quality </br>\n"
+"       Management of Administration test environments </br>\n"
+"       Administration Department of automated banking systems"
+msgstr ""
+"Департамет качества <br> Управление адимистрирования тестовых сред <br> "
+"Отдел администрирования автоматизированных банковских систем"
+
+#: templates/logged_out.html:8
+msgid ""
+"You are logout !</p>\n"
+"    <p>Thank you for being with us. "
+msgstr "Вы разлогинились !</p>\n"
+"<p>Спасибо, что были с нами."
+
+#: templates/search.html:6
+msgid "You searched for:"
+msgstr "Вы ищите:"
+
+#: templates/search.html:9
+#, python-format
+msgid ""
+"We found %(search_search|length)s coincidence%(search_search|pluralize)s."
+msgstr "Найдено %(search_search|length)s совподения(-й)%(search_search|pluralize)s."
+
+#: templates/search.html:17
+msgid "The entered value is not found. Try again."
+msgstr "Введенное значение не найдено. Попробуйте еще раз"

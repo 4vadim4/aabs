@@ -2,8 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = patterns('',
+urlpatterns = i18n_patterns('',
     # Examples:
     # url(r'^$', 'aabs.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
@@ -23,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^search/$', 'aabs.views.search', name='search'),
     url(r'^select_action/$', 'aabs.views.select_action', name='select_action'),
     url(r'^edit_form/(?P<cas_object_id>\w+)/$', 'aabs.views.edit_form', name='edit_form'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
