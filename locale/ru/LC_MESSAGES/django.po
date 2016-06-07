@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-06 18:07+0300\n"
+"POT-Creation-Date: 2016-06-07 12:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: aabs/admin.py:15
+msgid "Additionally info"
+msgstr "Дополнительная информация"
+
+#: aabs/forms.py:19
+msgid "Choose the file"
+msgstr "Выберите файл"
+
+#: aabs/models.py:17 aabs/models.py:18 templates/welcome.html:26
+msgid "CAS SRI"
+msgstr "ЦАС НСИ"
+
+#: aabs/models.py:20 templates/cas_nsi.html:61
+msgid "Stand"
+msgstr "Стенд"
+
+#: aabs/models.py:21 templates/cas_nsi.html:62
+msgid "Informative resource"
+msgstr "Информационный Ресурс"
+
+#: aabs/models.py:22 templates/cas_nsi.html:63
+msgid "Server name"
+msgstr "Имя сервера"
+
+#: aabs/models.py:23 templates/cas_nsi.html:64
+msgid "Configuration item"
+msgstr "Конфигурационный Элемент"
+
+#: aabs/models.py:24 templates/cas_nsi.html:65
+msgid "IP adress"
+msgstr "IP адрес"
+
+#: aabs/models.py:25 templates/cas_nsi.html:66
+msgid "URL adress"
+msgstr "URL адрес"
+
+#: aabs/models.py:26 templates/cas_nsi.html:67 templates/welcome.html:17
+msgid "Login"
+msgstr "Логин"
+
+#: aabs/models.py:27 templates/cas_nsi.html:68
+msgid "Password"
+msgstr "Пароль"
+
+#: aabs/models.py:37
+#, fuzzy
+#| msgid "CAS SRI"
+msgid "CAS SRI file"
+msgstr "документация ЦАС НСИ"
+
+#: aabs/models.py:38
+#, fuzzy
+#| msgid "CAS SRI"
+msgid "CAS SRI files"
+msgstr "документация ЦАС НСИ"
+
+#: aabs/models.py:55
+msgid "WLast name"
+msgstr "Отчество"
+
+#: aabs/models.py:62
+msgid "Profile"
+msgstr "Профиль"
+
+#: aabs/models.py:63
+msgid "Profiles"
+msgstr "Профили"
 
 #: aabs/views.py:153
 msgid "Logged out"
@@ -66,38 +134,6 @@ msgstr ""
 "- выгрузка файлов;<br>\n"
 "- контроль целостности и семантики хранимых данных."
 
-#: templates/cas_nsi.html:61
-msgid "Stand"
-msgstr "Стенд"
-
-#: templates/cas_nsi.html:62
-msgid "Informative resource"
-msgstr "Информационный Ресурс"
-
-#: templates/cas_nsi.html:63
-msgid "Server name"
-msgstr "Имя сервера"
-
-#: templates/cas_nsi.html:64
-msgid "Configuration item"
-msgstr "Конфигурационный Элемент"
-
-#: templates/cas_nsi.html:65
-msgid "IP adress"
-msgstr "IP адрес"
-
-#: templates/cas_nsi.html:66
-msgid "URL adress"
-msgstr "URL адрес"
-
-#: templates/cas_nsi.html:67
-msgid "Login"
-msgstr "Логин"
-
-#: templates/cas_nsi.html:68
-msgid "Password"
-msgstr "Пароль"
-
 #: templates/cas_nsi.html:102
 msgid "Resource:"
 msgstr "Ресурс"
@@ -118,6 +154,16 @@ msgid ""
 msgstr ""
 "Департамет качества <br> Управление адимистрирования тестовых сред <br> "
 "Отдел администрирования автоматизированных банковских систем"
+
+#: templates/irbis.html:9
+msgid "IRBIS -> here will be same information about IRBIS <-"
+msgstr ""
+"ИРБИС -> здесь будет информация о Автоматизированная система \"Интерфейс "
+"Репликации Бансковских Информационных Справочников\" <-"
+
+#: templates/kc.html:10
+msgid "CC -> here will be same information about CC <-"
+msgstr "КС -> здесь будет информация о системе Кассовый Центр "
 
 #: templates/logged_out.html:8
 msgid ""
@@ -142,9 +188,12 @@ msgstr ""
 msgid "The entered value is not found. Try again."
 msgstr "Введенное значение не найдено. Попробуйте еще раз"
 
+#: templates/vik.html:10
+msgid "VIK -> here will be same information about VIK <-"
+msgstr "ВИК -> здесь будет информация о системе ВИК "
+
 #: templates/welcome.html:15
-#, python-format
-msgid "Log out (%(username)s)</a>"
+msgid "Logout (%(username)s)"
 msgstr "Выход (%(username)s)</a>"
 
 #: templates/welcome.html:22
@@ -154,10 +203,6 @@ msgstr "Главная"
 #: templates/welcome.html:25
 msgid "IRBIS"
 msgstr "ИРБИС"
-
-#: templates/welcome.html:26
-msgid "CAS SRI"
-msgstr "ЦАС НСИ"
 
 #: templates/welcome.html:27
 msgid "CC"

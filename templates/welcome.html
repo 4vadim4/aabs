@@ -12,9 +12,9 @@
     <div id="top-bar-section">
         <!--<ul> class="right">-->
             {% if user.is_authenticated %}
-                <p><a href="{% url 'logout' %}">{% blocktrans %}Log out ({{ username }})</a>{% endblocktrans %}</p>
+                <p><a href="{% url 'logout' %}">{% blocktrans %}Logout ({{ username }}){% endblocktrans %}</a></p>
             {% else %}
-                <p><a href="{% url 'openlogin' %}?next={{request.path}}">Войти</a></p>
+                <p><a href="{% url 'openlogin' %}?next={{request.path}}">{% blocktrans %}Login{% endblocktrans %}</a></p>
             {% endif %}
        <!-- </ul>-->
     </div>

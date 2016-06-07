@@ -2,6 +2,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import CASBook, LoadFileForm
+from django.utils.translation import ugettext_lazy as _
 
 class AddCASBook(ModelForm):
     class Meta:
@@ -15,6 +16,6 @@ class AddLoadFileForm(ModelForm):
         fields = '__all__'
 
     file = forms.FileField(
-        label='Выберите файл',
+        label=_('Choose the file',)
 #        help_text='max. 42 Mb'
     )
