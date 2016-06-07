@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,17 +12,20 @@
     <div id="top-bar-section">
         <!--<ul> class="right">-->
             {% if user.is_authenticated %}
-                <p><a href="{% url 'logout' %}">Выйти ({{ username }})</a></p>
+                <p><a href="{% url 'logout' %}">{% blocktrans %}Log out ({{ username }})</a>{% endblocktrans %}</p>
             {% else %}
                 <p><a href="{% url 'openlogin' %}?next={{request.path}}">Войти</a></p>
             {% endif %}
        <!-- </ul>-->
     </div>
 </div>
-<p><h4><a href="{% url 'home' %}">Home</a></h4></p>
+<p><h4><a href="{% url 'home' %}">{% blocktrans %}Home{% endblocktrans %}</a></h4></p>
 <br><br>
     <div id="topnav">
-      <a href="{% url 'irbis' %}">АС ИРБИС</a> &nbsp | &nbsp <a href="{% url 'cas_nsi' %}">АС ЦАС НСИ</a> &nbsp | &nbsp  <a href="{% url 'kc' %}">АС КЦ</a> &nbsp | &nbsp <a href="{% url 'vik' %}">АС ВИК</a>
+      <a href="{% url 'irbis' %}">{% blocktrans %}IRBIS{% endblocktrans %}</a> &nbsp | &nbsp
+        <a href="{% url 'cas_nsi' %}">{% blocktrans %}CAS SRI{% endblocktrans %}</a> &nbsp | &nbsp
+        <a href="{% url 'kc' %}">{% blocktrans %}CC{% endblocktrans %}</a> &nbsp | &nbsp
+        <a href="{% url 'vik' %}">{% blocktrans %}VIK{% endblocktrans %}</a>
     </div>
 <br><br><br><br>
 
@@ -29,7 +33,7 @@
 <div id="search">
     <form action="{% url 'search' %}" method="get">
         <input type="text" name="q">
-        <input type="submit" value="Search">
+        <input type="submit" value="{% blocktrans %}Search{% endblocktrans %}">
     </form>
 </div>
 </div>

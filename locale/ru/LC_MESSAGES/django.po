@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-06 16:38+0300\n"
+"POT-Creation-Date: 2016-06-06 18:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,8 @@ msgstr ""
 msgid ""
 "You are logout !</p>\n"
 "    <p>Thank you for being with us. "
-msgstr "Вы разлогинились !</p>\n"
+msgstr ""
+"Вы разлогинились !</p>\n"
 "<p>Спасибо, что были с нами."
 
 #: templates/search.html:6
@@ -134,8 +135,38 @@ msgstr "Вы ищите:"
 #, python-format
 msgid ""
 "We found %(search_search|length)s coincidence%(search_search|pluralize)s."
-msgstr "Найдено %(search_search|length)s совподения(-й)%(search_search|pluralize)s."
+msgstr ""
+"Найдено %(search_search|length)s совподения(-й)%(search_search|pluralize)s."
 
 #: templates/search.html:17
 msgid "The entered value is not found. Try again."
 msgstr "Введенное значение не найдено. Попробуйте еще раз"
+
+#: templates/welcome.html:15
+#, python-format
+msgid "Log out (%(username)s)</a>"
+msgstr "Выход (%(username)s)</a>"
+
+#: templates/welcome.html:22
+msgid "Home"
+msgstr "Главная"
+
+#: templates/welcome.html:25
+msgid "IRBIS"
+msgstr "ИРБИС"
+
+#: templates/welcome.html:26
+msgid "CAS SRI"
+msgstr "ЦАС НСИ"
+
+#: templates/welcome.html:27
+msgid "CC"
+msgstr "КЦ"
+
+#: templates/welcome.html:28
+msgid "VIK"
+msgstr "ВИК"
+
+#: templates/welcome.html:36
+msgid "Search"
+msgstr "Искать"

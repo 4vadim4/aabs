@@ -1,5 +1,5 @@
 ﻿EN:
-small site for department
+small site for department;
 working tab - "ЦАС НСИ"
 
 realize:
